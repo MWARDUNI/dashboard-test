@@ -1,4 +1,4 @@
-// src/theme.js
+
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -13,7 +13,7 @@ const theme = createTheme({
   typography: {
     fontFamily: 'Roboto, Arial, sans-serif',
   },
-  // Add more customizations here
+  
 });
 
 export default theme;

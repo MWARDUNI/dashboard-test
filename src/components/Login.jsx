@@ -21,12 +21,12 @@ const Login = ({ onLogin }) => {
     try {
       setSubmitting(true);
 
-      // Simulate an API request
+      // simulate an API request
       const response = await fakeApiLogin(values.username, values.password);
 
       if (response.success) {
         onLogin();
-        navigate('/dashboard'); // Navigate to the dashboard after a successful login
+        navigate('/dashboard'); // navigate to dashboard after a successful login
       } else {
         setErrors({ serverError: 'Invalid username or password' });
       }
@@ -38,7 +38,7 @@ const Login = ({ onLogin }) => {
   };
 
   const fakeApiLogin = (username, password) => {
-    // Simulate a call to a real authentication API
+    // simulate a call to a real authentication API
     return new Promise((resolve) => {
       setTimeout(() => {
         if (username === 'admin' && password === 'admin') {

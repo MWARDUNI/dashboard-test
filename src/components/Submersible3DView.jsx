@@ -7,12 +7,12 @@ const Submersible = ({ position, depth, speed }) => {
   const [pathHistory, setPathHistory] = useState([]);
 
   useEffect(() => {
-    // Initialize pathHistory with the first position
+    // init pathHistory with the first position
     const x = (position[1] + 180) / 360 - 0.5;
     const y = depth / 1000 - 0.5;
     const z = (position[0] + 90) / 180 - 0.5;
     setPathHistory([[x, y, z]]);
-  }, []); // Empty dependency array means this runs once on mount
+  }, []); 
 
   useFrame(() => {
     if (submersibleRef.current) {
@@ -24,7 +24,7 @@ const Submersible = ({ position, depth, speed }) => {
 
       setPathHistory(prevHistory => {
         const newHistory = [...prevHistory, [x, y, z]];
-        return newHistory.slice(-1000); // Keep last 1000 points
+        return newHistory.slice(-1000); // keep last 1000 points
       });
     }
   });
@@ -63,7 +63,7 @@ const Submersible3DView = ({ position, depth, speed }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setRenderKey(prev => prev + 1); // Force re-render every second
+      setRenderKey(prev => prev + 1); // force re-render every second
     }, 1000);
     return () => clearInterval(interval);
   }, []);
@@ -79,15 +79,15 @@ const Submersible3DView = ({ position, depth, speed }) => {
         <Submersible key={position.join(',')} position={position} depth={depth} speed={speed} />
         <OrbitControls />
 
-        {/* X-axis (Longitude) labels */}
+        {/* x-axis (longitude) labels */}
         <AxisLabel position={[0.5, -0.55, -0.55]} text="180°E" />
         <AxisLabel position={[-0.5, -0.55, -0.55]} text="180°W" />
 
-        {/* Y-axis (Depth) labels */}
+        {/* y-axis (depth) labels */}
         <AxisLabel position={[-0.55, 0.5, -0.55]} text="0m" />
         <AxisLabel position={[-0.55, -0.5, -0.55]} text="1000m" />
 
-        {/* Z-axis (Latitude) labels */}
+        {/* z-axis (latitude) labels */}
         <AxisLabel position={[-0.55, -0.55, 0.5]} text="90°N" />
         <AxisLabel position={[-0.55, -0.55, -0.5]} text="90°S" />
       </Canvas>

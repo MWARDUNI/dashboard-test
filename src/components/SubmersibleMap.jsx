@@ -13,7 +13,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
 });
 
-// Ocean areas (very simplified, you might want to use more precise data)
+// ocean "areas"
 const oceanAreas = [
   { name: 'Pacific Ocean', bounds: [[-60, -180], [60, -80]] },
   { name: 'Atlantic Ocean', bounds: [[-60, -80], [60, 20]] },
@@ -53,7 +53,7 @@ const SubmersibleMap = ({ position, depth, speed, setPosition, setDepth, setSpee
         return newPosition;
       });
 
-      // Randomly adjust depth, heading, and speed
+      // randomly adjust depth, heading, and speed
       setDepth(current => Math.max(50, Math.min(1000, current + (Math.random() - 0.5) * 20)));
       setHeading(current => (current + (Math.random() - 0.5) * 10 + 360) % 360);
       setSpeed(current => Math.max(1, Math.min(10, current + (Math.random() - 0.5))));
