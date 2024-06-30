@@ -41,7 +41,7 @@ const Login = ({ onLogin }) => {
     // Simulate a call to a real authentication API
     return new Promise((resolve) => {
       setTimeout(() => {
-        if (username === 'admin' && password === 'password') {
+        if (username === 'admin' && password === 'admin') {
           resolve({ success: true });
         } else {
           resolve({ success: false });
